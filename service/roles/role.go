@@ -89,7 +89,7 @@ func (s *RoleService) GetAuthBy(roleID bson.ObjectId /* #name:"role_id"# */) (al
 	return allow, nil
 }
 
-// Update the Role #route:"PUT /{role_id}/auth"#
+// Update the Role #route:"PUT /auth/{role_id}"#
 func (s *RoleService) UpdateAuth(roleID bson.ObjectId /* #name:"role_id"# */, auth *Auth) (err error) {
 	m := bson.D{{strings.Join([]string{"allow", auth.Path, auth.Method}, "."), auth.Allow}}
 	err = s.db.UpdateId(roleID, m)

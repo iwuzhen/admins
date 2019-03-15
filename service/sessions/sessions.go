@@ -10,8 +10,8 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
 	"github.com/kidstuff/mongostore"
-	"gitlab.com/genned/admins/service/roles"
 	"gitlab.com/genned/admins/service/admins"
+	"gitlab.com/genned/roles/service/roles"
 )
 
 func init() {
@@ -20,10 +20,10 @@ func init() {
 
 // SessionsService #path:"/sessions/"#
 type SessionsService struct {
-	name  string
-	store *mongostore.MongoStore
+	name   string
+	store  *mongostore.MongoStore
 	admins *admins.AdminsService
-	role  *roles.RoleService
+	role   *roles.RoleService
 }
 
 func NewSessionsService(name string, db *mgo.Collection, admins *admins.AdminsService, role *roles.RoleService) (*SessionsService, error) {
@@ -130,7 +130,7 @@ func (s *SessionsService) LoginNoauth(login *admins.AdminNoauth, create bool, w 
 func (s *SessionsService) Login(login *Login, w http.ResponseWriter, r *http.Request) (admin *admins.AdminWithID, err error) {
 	admin, err = s.admins.Verify(&admins.Admin{
 		AdminInfo: login.AdminInfo,
-		Password: login.Password,
+		Password:  login.Password,
 	})
 	if err != nil {
 		return nil, err

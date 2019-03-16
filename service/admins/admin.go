@@ -86,6 +86,11 @@ func (s *AdminsService) Update(adminID bson.ObjectId /*#name:"admin_id"#*/, admi
 	return s.db.UpdateId(adminID, admin)
 }
 
+// UpdateRole #route:"PUT /{admin_id}/{role_id}"#
+func (s *AdminsService) UpdateRole(adminID bson.ObjectId /*#name:"admin_id"#*/, roleID bson.ObjectId /*#name:"role_id"#*/) (err error) {
+	return s.db.UpdateId(adminID, bson.D{{"$set", bson.D{{"role_id", roleID}}}})
+}
+
 // Delete #route:"DELETE /{admin_id}"#
 func (s *AdminsService) Delete(adminID bson.ObjectId /*#name:"admin_id"#*/) (err error) {
 	return s.db.RemoveId(adminID)

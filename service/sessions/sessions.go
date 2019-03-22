@@ -93,7 +93,7 @@ func (s *SessionsService) verify(handler http.Handler, noauth bool) http.Handler
 	})
 }
 
-func (s *SessionsService) LoginNoauth(login *admins.AdminNoauth, create bool, w http.ResponseWriter, r *http.Request) (admin *admins.AdminWithID, err error) {
+func (s *SessionsService) LoginNoauth(login *admins.AdminInfo, create bool, w http.ResponseWriter, r *http.Request) (admin *admins.AdminWithID, err error) {
 	admin, err = s.admins.GetAccount(login.Account)
 
 	if err != nil {

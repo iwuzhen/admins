@@ -8,10 +8,6 @@ type AdminInfo struct {
 	PhoneNumber string `bson:"phone_number,omitempty" json:"phone_number"`
 }
 
-type AdminNoauth struct {
-	AdminInfo `bson:",inline"`
-}
-
 type Admin struct {
 	AdminInfo `bson:",inline"`
 	// 密码

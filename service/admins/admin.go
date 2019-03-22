@@ -31,7 +31,7 @@ func NewAdminsService(name string, db *mgo.Collection) (*AdminsService, error) {
 }
 
 // CreateNoauth
-func (s *AdminsService) CreateNoauth(admin *AdminNoauth) (adminID bson.ObjectId, err error) {
+func (s *AdminsService) CreateNoauth(admin *AdminInfo) (adminID bson.ObjectId, err error) {
 	count, _ := s.db.Find(bson.D{{"account", admin.Account}}).Count()
 	if count != 0 {
 		return "", errors.New("账号已经存在请勿重新注册")
@@ -40,7 +40,7 @@ func (s *AdminsService) CreateNoauth(admin *AdminNoauth) (adminID bson.ObjectId,
 	err = s.db.Insert(AdminWithID{
 		ID: adminID,
 		Admin: Admin{
-			AdminInfo: admin.AdminInfo,
+			AdminInfo: *admin,
 		},
 		CreateTime: bson.Now(),
 	})

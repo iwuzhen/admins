@@ -74,6 +74,13 @@ func (s *SessionsService) verify(handler http.Handler, noauth bool) http.Handler
 			}
 
 			adminI, _ := admin.(*admins.AdminWithID)
+			adminI, err = s.admins.Get(adminI.ID)
+			if err != nil {
+				s.Logout(w, r)
+				http.Error(w, "登入信息已过期", 403)
+				return
+			}
+
 			if adminI.RoleID == "" {
 				http.Error(w, "没有任何权限", 401)
 				return

@@ -3,8 +3,8 @@ package admin
 import (
 	"net/http"
 
-	"gitlab.com/genned/admins/service/admins"
-	"gitlab.com/genned/admins/service/sessions"
+	"github.com/iwuzhen/admins/service/admins"
+	"github.com/iwuzhen/admins/service/sessions"
 )
 
 // Admin #middleware:"admin"#

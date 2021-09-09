@@ -9,9 +9,9 @@ import (
 	"github.com/globalsign/mgo"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
+	"github.com/iwuzhen/admins/service/admins"
+	"github.com/iwuzhen/roles/service/roles"
 	"github.com/kidstuff/mongostore"
-	"gitlab.com/genned/admins/service/admins"
-	"gitlab.com/genned/roles/service/roles"
 )
 
 func init() {

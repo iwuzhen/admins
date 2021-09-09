@@ -1,7 +1,7 @@
 package sessions
 
 import (
-	"gitlab.com/genned/admins/service/admins"
+	"github.com/iwuzhen/admins/service/admins"
 )
 
 type Login struct {

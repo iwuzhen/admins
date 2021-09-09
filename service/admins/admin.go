@@ -6,7 +6,7 @@ import (
 
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"
-	"github.com/wzshiming/password"
+	"github.com/iwuzhen/password"
 )
 
 type AdminWithID struct {
